@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import brainLogo from "../../assets/brain_logo.png";
 const Signup = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,8 +32,7 @@ const Signup = () => {
                 sm={4}
                 md={7}
                 sx={{
-                    backgroundImage:
-                        "url(https://cdn.pixabay.com/photo/2023/02/26/19/21/ai-generated-7816775_1280.jpg)",
+                    backgroundImage: `url(${brainLogo})`, //Pixabay CDN:  "url(https://cdn.pixabay.com/photo/2023/02/26/19/21/ai-generated-7816775_1280.jpg)",
                     backgroundRepeat: "no-repeat",
                     backgroundColor: (t) =>
                         t.palette.mode === "light"
