@@ -29,7 +29,7 @@ const generateAccessAndRefreshToken = async (_id) => {
 };
 export const Signup = async (req, res) => {
     try {
-        const { email, password, role, firstname, lastname } = req.body;
+        const { email, password, role, firstname, lastname } = req.body?.data;
 
         if (
             [email, , firstname, lastname, password, role].some(
@@ -79,7 +79,7 @@ export const Signup = async (req, res) => {
 };
 export const Login = async (req, res) => {
     try {
-        const { email, password, role } = req.body;
+        const { email, password, role } = req.body?.data;
         if ([email, password].some((field) => field?.trim() === "")) {
             throw new ApiError(
                 400,
