@@ -1,4 +1,10 @@
-import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
+import {
+    createBrowserRouter,
+    Link,
+    RouterProvider,
+    redirect,
+    Navigate,
+} from "react-router-dom";
 import "./App.css";
 // import HomePage from "./components/HomePage";
 import ErrorPage from "./components/ErrorPage";
@@ -10,8 +16,12 @@ import PrivateRoutes from "./routes/PrivateRoutes";
 import Signup from "./components/auth/Signup";
 import HomePage from "./components/HomePage";
 import Login from "./components/auth/Login";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const App = () => {
+    const isToken = useSelector((state) => state.auth?.token);
+
     const routes = [
         {
             element: <PrivateRoutes />,
@@ -55,6 +65,7 @@ const App = () => {
     ];
 
     const router = createBrowserRouter(routes);
+
     return <RouterProvider router={router} />;
 };
 

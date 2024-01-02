@@ -7,7 +7,7 @@ import Checkbox from "@mui/material/Checkbox";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import AxiosInstance from "../../services/AxiosInstance";
 import { toast } from "react-toastify";
@@ -43,7 +43,7 @@ const Login = () => {
 
                     dispatch(loginSuccess(userData));
 
-                    navigate("/");
+                    redirect("/");
                 }
             })
             .catch((error) => {

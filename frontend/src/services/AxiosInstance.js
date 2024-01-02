@@ -1,5 +1,5 @@
 import axios from "axios";
-import store from "../store/store";
+import { store } from "../store/store";
 
 const baseurl = import.meta.env.VITE_APP_BASE_URL + "/api/v1";
 
