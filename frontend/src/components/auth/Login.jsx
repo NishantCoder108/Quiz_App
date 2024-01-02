@@ -11,9 +11,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import AxiosInstance from "../../services/AxiosInstance";
 import { toast } from "react-toastify";
+import { loginSuccess } from "../../store/AuthSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -35,7 +38,12 @@ const Login = () => {
                     toast.success(response.data.message, {
                         position: toast.POSITION.TOP_LEFT,
                     });
-                    navigate("/home");
+
+                    const userData = response.data;
+
+                    dispatch(loginSuccess(userData));
+
+                    navigate("/");
                 }
             })
             .catch((error) => {

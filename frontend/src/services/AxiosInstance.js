@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../store/store";
 
 const baseurl = import.meta.env.VITE_APP_BASE_URL + "/api/v1";
 
@@ -11,6 +12,23 @@ const AxiosInstance = axios.create({
     },
 });
 
-// You can add request interceptors or other configurations as needed
+// Add a request interceptor to include the access token in the headers
+AxiosInstance.interceptors.request.use(
+    (config) => {
+        // Get the access token from your Redux state
+        const accessToken = store.getState().auth.token;
+
+        // If the access token exists, add it to the headers
+        if (accessToken) {
+            config.headers["Authorization"] = `Bearer ${accessToken}`;
+        }
+
+        return config;
+    },
+    (error) => {
+        // Handle request error
+        return Promise.reject(error);
+    }
+);
 
 export default AxiosInstance;

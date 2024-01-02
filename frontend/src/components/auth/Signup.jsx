@@ -33,7 +33,7 @@ const Signup = () => {
                     toast.success(response.data.message, {
                         position: toast.POSITION.TOP_RIGHT,
                     });
-                    navigate("/");
+                    navigate("/login");
                 }
             })
             .catch((error) => {
@@ -163,7 +163,7 @@ const Signup = () => {
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link to="/" variant="body2">
+                                <Link to="/login" variant="body2">
                                     {"Do you have an account? Sign in."}
                                 </Link>
                             </Grid>
